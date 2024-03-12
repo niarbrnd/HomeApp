@@ -34,6 +34,7 @@ internal object Global {
     const val TASMOTA = "Tasmota"
     const val NODE_RED = "Node-RED"
     const val WEBSITE = "Website"
+    const val MEGAD = "MegaD"
     const val FRITZ_AUTO_LOGIN = "Fritz! Auto-Login"
     val UNIFIED_MODES =
         arrayOf(
@@ -43,6 +44,7 @@ internal object Global {
             SHELLY_GEN_2,
             SIMPLE_HOME_API,
             TASMOTA,
+            MEGAD,
         )
     val POWER_MENU_MODES =
         arrayOf(
@@ -52,6 +54,7 @@ internal object Global {
             SHELLY_GEN_2,
             SIMPLE_HOME_API,
             TASMOTA,
+            MEGAD,
         )
 
     fun getCorrectAPI(
@@ -68,6 +71,7 @@ internal object Global {
             TASMOTA -> Tasmota(context, deviceId, tasmotaHelperInterface ?: recyclerViewInterface)
             SHELLY_GEN_1 -> ShellyAPI(context, deviceId, recyclerViewInterface, 1)
             SHELLY_GEN_2 -> ShellyAPI(context, deviceId, recyclerViewInterface, 2)
+            MEGAD -> MegaDAPI(context, deviceId, recyclerViewInterface)
             else -> UnifiedAPI(context, deviceId, recyclerViewInterface)
         }
 
